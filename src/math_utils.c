@@ -23,12 +23,12 @@ t_complex	square_complex(t_complex z)
 	return (result);
 }
 
-t_complex	abs_square_complex(t_complex z)
+t_complex	abs_complex(t_complex z)
 {
 	t_complex	result;
 
-	result.re = z.re * z.re - z.im * z.im;
-	result.im = 2 * fabs(z.re) * fabs(z.im);
+	result.re = fabs(z.re); 
+	result.im = fabs(z.im);
 	return (result);
 }
 

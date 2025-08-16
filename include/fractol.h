@@ -9,8 +9,8 @@
 # include <X11/keysym.h>
 # include "mlx.h"
 
-# define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_x> <value_y>\"\n or \n\t ./fractol burning_ship\""
-# define ERROR_JULIA "Please enter valid numbers \n\t\".fractol julia <value_x> <value_y>\""
+# define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_x> <value_y>\"\n or \n\t ./fractol burning_ship\"\n"
+# define ERROR_JULIA "Please enter valid numbers \n\t\".fractol julia <value_x> <value_y>\"\n"
 
 # define WIDTH	512
 # define HEIGHT	512
@@ -64,7 +64,7 @@ void    fractal_init(t_fractal *fractal);
 double  map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_complex   sum_complex(t_complex z1, t_complex z2);
 t_complex   square_complex(t_complex z);
-t_complex   abs_square_complex(t_complex z);
+t_complex   abs_complex(t_complex z);
 int get_psychedelic_color(int i, t_fractal *fractal);
 int ft_strlen(char *str);
 int ft_strncmp(const char *s1, const char *s2, int n);

@@ -63,10 +63,10 @@ void	calculate_burning_ship(int x, int y, t_fractal *fractal)
 	z.re = 0;
 	z.im = 0;
 	c.re = (map(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-	c.im = (map(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	c.im = (map(y, -2, 2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	while (i < fractal->iterations_definition)
 	{
-		z = sum_complex(abs_square_complex(z), c);
+		z = sum_complex(square_complex(abs_complex(z)), c);
 		if ((z.re * z.re) + (z.im * z.im) > fractal->escape_value)
 		{
 			color = get_psychedelic_color(i, fractal); 
