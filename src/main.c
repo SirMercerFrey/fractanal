@@ -1,17 +1,19 @@
 #include "fractol.h"
 
-int	main(int argc, char *argv)
+int	main(int argc, char **argv)
 {
+	t_fractal	fractal;
+
 	if ((2 == argc && !ft_strncmp(argv[1], "mandelbrot", 10))
 		|| (4 == argc && !ft_strncmp(argv[1], "julia", 5))
 		|| (2 == argc && !ft_strncmp(argv[1], "burning_ship", 12)))
 	{
 		fractal.name = argv[1];
-		if (!ft_strncmp(fractl.name, "julia", 5))
+		if (!ft_strncmp(fractal.name, "julia", 5))
 		{
 			if (!is_valid_double(argv[2]) || !is_valid_double(argv[3]))
 			{
-				putstr_fd(ERROR_JULIA, STDERR_FILENO);
+				ft_putstr_fd(ERROR_JULIA, STDERR_FILENO);
 				exit(EXIT_FAILURE);
 			}
 			fractal.julia_x = atodbl(argv[2]);
@@ -23,7 +25,7 @@ int	main(int argc, char *argv)
 	}
 	else
 	{
-		putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+		ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 }

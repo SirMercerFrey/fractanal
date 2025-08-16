@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen(char *str)
 {
 	char	*end;
 
@@ -23,14 +23,14 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 	return (*s1 - *s2);
 }
 
-void	put_str_fd(const char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (NULL == s || fd < 0)
 		return ;
-	write(fd, s, ft_strlen);
+	write(fd, s, ft_strlen(s));
 }
 
-int	is_valid_double(const char *s)
+int	is_valid_double(char *s)
 {
 	int		has_dot;
 
@@ -39,7 +39,7 @@ int	is_valid_double(const char *s)
 		return (0);
 	if (*s == '-' || *s == '+')
 		++s;
-	if ((*s < '0' && *s > '9') && *s != '.')
+	if ((*s < '0' || *s > '9') && *s != '.')
 		return (0);
 	while (*s)
 	{
@@ -51,12 +51,12 @@ int	is_valid_double(const char *s)
 		}
 		else if (*s < '0' && *s > '9')
 			return (0);
-	++i;
+	++s;
 	}
 	return (1);
 }
 
-double	atodbl(const char *s)
+double	atodbl(char *s)
 {
 	double	integer_part;
 	double	fractional_part;
@@ -74,7 +74,7 @@ double	atodbl(const char *s)
 			sign *= -1;
 	while (*s != '.' && *s)
 		integer_part = (integer_part * 10) + (*s++ - 48);
-	if ("." == *s)
+	if ('.' == *s)
 		++s;
 	while (*s)
 	{

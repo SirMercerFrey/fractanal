@@ -11,7 +11,7 @@ int	close_handler(t_fractal *fractal)
 
 int	key_handler(int keysym, t_fractal *fractal)
 {
-	if (keysym == XK_ESCAPE)
+	if (keysym == XK_Escape)
 		close_handler(fractal);
 	if (keysym == XK_Left)
 		fractal->shift_x += (0.5 * fractal->zoom);
@@ -33,6 +33,9 @@ int	key_handler(int keysym, t_fractal *fractal)
 
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
+	(void)x;
+	(void)y;
+
 	if (button == Button5)
 		fractal->zoom *= 0.95;
 	else if (button == Button4)

@@ -14,7 +14,7 @@ t_complex	sum_complex(t_complex z1, t_complex z2)
 	return (result);
 }
 
-t_complex	sqare_complex(t_complex z)
+t_complex	square_complex(t_complex z)
 {
 	t_complex	result;
 
@@ -23,7 +23,7 @@ t_complex	sqare_complex(t_complex z)
 	return (result);
 }
 
-t_complex	abs_sqare_complex(t_complex z)
+t_complex	abs_square_complex(t_complex z)
 {
 	t_complex	result;
 
@@ -39,14 +39,14 @@ int	get_psychedelic_color(int i, t_fractal *fractal)
 	int		g;
 	int		b;
 
-	t = double(i) / fractal->iterations_definition;
+	t = (double)i / fractal->iterations_definition;
 	r = (int)(9 * (1 - t) * t * t * t * 255);
 	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
 	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	if (1 == fractal->color_shift % 3)	
 		return ((b << 16) | (r << 8) | g);
 	else if (2 == fractal->color_shift % 3)
-		return ((g >> 16 | (b >> 8) | r);
+		return ((g >> 16) | (b >> 8) | r);
 	else
 		return ((r << 16) | (g << 8) | b);
 }

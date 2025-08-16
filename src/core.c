@@ -5,6 +5,7 @@ void	calculate_mandelbrot(int x, int y, t_fractal *fractal)
 	t_complex	z;
 	t_complex	c;
 	int			i;
+	int			color;
 
 	i = 0;
 	z.re = 0;
@@ -30,6 +31,7 @@ void	calculate_julia(int x, int y, t_fractal *fractal)
 	t_complex	z;
 	t_complex	c;
 	int			i;
+	int			color;
 
 	i = 0;
 	z.re = (map(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
@@ -41,7 +43,7 @@ void	calculate_julia(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.re * z.re) + (z.im * z.im) > fractal->escape_value)
 		{
-			color = get_psychedelic_color(i, fractal->escape_value, fractal->color_shift);
+			color = get_psychedelic_color(i, fractal);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
@@ -55,6 +57,7 @@ void	calculate_burning_ship(int x, int y, t_fractal *fractal)
 	t_complex	z;
 	t_complex	c;
 	int			i;
+	int			color;
 
 	i = 0;
 	z.re = 0;
@@ -66,7 +69,7 @@ void	calculate_burning_ship(int x, int y, t_fractal *fractal)
 		z = sum_complex(abs_square_complex(z), c);
 		if ((z.re * z.re) + (z.im * z.im) > fractal->escape_value)
 		{
-			color = get_psychedelic_color(i, fractal->escape_value, fractal->color_shift);
+			color = get_psychedelic_color(i, fractal); 
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}

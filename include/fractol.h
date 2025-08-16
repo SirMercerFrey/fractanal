@@ -7,10 +7,10 @@
 # include <math.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include "minilibx-linus/mlx.h"
+# include "mlx.h"
 
-# define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_x> <value_y>\"\n or \n\t ./fractol burning_ship"
-# define ERROR_JULIA "Please enter valid numbers \n\t\".fractol julia <value_x> <value_y>\"
+# define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_x> <value_y>\"\n or \n\t ./fractol burning_ship\""
+# define ERROR_JULIA "Please enter valid numbers \n\t\".fractol julia <value_x> <value_y>\""
 
 # define WIDTH	512
 # define HEIGHT	512
@@ -44,7 +44,9 @@ typedef struct	s_fractal
 	double	shift_y;
 	double	zoom;
 	int		color_shift;
-}
+	double	julia_x;
+	double	julia_y;
+} t_fractal;
 
 void    calculate_mandelbrot(int x, int y, t_fractal *fractal);
 void    calculate_julia(int x, int y, t_fractal *fractal);
@@ -61,13 +63,13 @@ void    events_init(t_fractal *fractal);
 void    fractal_init(t_fractal *fractal);
 double  map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_complex   sum_complex(t_complex z1, t_complex z2);
-t_complex   sqare_complex(t_complex z);
-t_complex   abs_sqare_complex(t_complex z);
+t_complex   square_complex(t_complex z);
+t_complex   abs_square_complex(t_complex z);
 int get_psychedelic_color(int i, t_fractal *fractal);
-int ft_strlen(const char *str);
+int ft_strlen(char *str);
 int ft_strncmp(const char *s1, const char *s2, int n);
-void    put_str_fd(const char *s, int fd);
-int is_valid_double(const char *s);
-double  atodbl(const char *s);
+void    ft_putstr_fd(char *s, int fd);
+int is_valid_double(char *s);
+double  atodbl(char *s);
 
 #endif
