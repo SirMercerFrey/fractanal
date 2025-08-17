@@ -35,12 +35,10 @@ t_complex	abs_complex(t_complex z)
 int	get_psychedelic_color(int i, t_fractal *fractal)
 {
 	int		cross;
-	int		shift;
 
 	if (fractal->iterations_definition == 0)
 		return (COLORS[0]);
 	
 	cross = i * COLOR_COUNT / fractal->iterations_definition;
-	shift = fractal->color_shift % COLOR_COUNT;
-	return (COLORS[(cross + shift) % COLOR_COUNT]);
+	return (COLORS[(cross + fractal->color_shift) % COLOR_COUNT]);
 }
