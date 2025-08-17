@@ -47,6 +47,8 @@ int mouse_handler(int button, int x, int y, t_fractal *fractal)
 		zoom_factor = 0.95;
 	else if (button == Button5)
 		zoom_factor = 1.05;
+	else
+		return (0);
 	fractal->zoom *= zoom_factor;
 	mouse_re_after = (map(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
 	mouse_im_after = (map(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;

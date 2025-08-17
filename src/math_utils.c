@@ -32,7 +32,7 @@ t_complex	abs_complex(t_complex z)
 	return (result);
 }
 
-int	get_psychedelic_color(int i, t_fractal *fractal)
+/*int	get_psychedelic_color(int i, t_fractal *fractal)
 {
 	double	t;
 	int		r;
@@ -49,4 +49,27 @@ int	get_psychedelic_color(int i, t_fractal *fractal)
 		return ((g >> 16) | (b >> 8) | r);
 	else
 		return ((r << 16) | (g << 8) | b);
+}
+*/
+
+int	get_psychedelic_color(int i, t_fractal *fractal)
+{
+	int		r;
+	int		g;
+	int		b;
+	int		colors[3];
+	int		shift;
+	double	t;
+
+	t = (double)i / fractal->iterations_definition;
+	r = (int)(sin(6.283 * t + 0) * 127 + 128);
+	g = (int)(sin(6.283 * t + 2) * 127 + 128);
+	b = (int)(sin(6.283 * t + 4) * 127 + 128);
+	colors[0] = r;
+	colors[1] = g;
+	colors[2] = b;
+	shift = fractal->color_shift % 3;
+	return ((colors[(shift + 0) % 3] << 16)
+			| (colors[(shift + 1) % 3] << 8)
+			| colors[(shift + 2) % 3]);
 }
