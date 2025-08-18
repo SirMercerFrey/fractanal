@@ -63,7 +63,7 @@ int	is_valid_double(char *s)
 		}
 		else if (*s < '0' && *s > '9')
 			return (0);
-	++s;
+		++s;
 	}
 	return (1);
 }

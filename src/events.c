@@ -43,31 +43,31 @@ int	key_handler(int keysym, t_fractal *fractal)
 	return (0);
 }
 
-int mouse_handler(int button, int x, int y, t_fractal *fractal)
+int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	double zoom_factor;
-	double mouse_re_before;
-	double mouse_im_before;
-	double mouse_re_after;
-	double mouse_im_after;
+	double	zoom_factor;
+	double	m_re_before;
+	double	m_im_before;
+	double	m_re_after;
+	double	m_im_after;
 
-	mouse_re_before = (map(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-	mouse_im_before = (map(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	m_re_before = map(x, -4, 4, WIDTH) * fractal->zoom + fractal->shift_x;
+	m_im_before = map(y, 4, -4, HEIGHT) * fractal->zoom + fractal->shift_y;
 	if (!ft_strncmp(fractal->name, "burning_ship", 12))
-		mouse_im_before = (map(y, -2, 2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
-	if (button == Button4) 
+		m_im_before = map(y, -4, 4, HEIGHT) * fractal->zoom + fractal->shift_y;
+	if (button == Button4)
 		zoom_factor = 0.95;
 	else if (button == Button5)
 		zoom_factor = 1.05;
 	else
 		return (0);
 	fractal->zoom *= zoom_factor;
-	mouse_re_after = (map(x, -2, 2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-	mouse_im_after = (map(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	m_re_after = (map(x, -4, 4, WIDTH) * fractal->zoom) + fractal->shift_x;
+	m_im_after = (map(y, 4, -4, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	if (!ft_strncmp(fractal->name, "burning_ship", 12))
-		mouse_im_after = (map(y, -2, 2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
-	fractal->shift_x -= (mouse_re_after - mouse_re_before);
-	fractal->shift_y -= (mouse_im_after - mouse_im_before);
+		m_im_after = map(y, -4, 4, HEIGHT) * fractal->zoom + fractal->shift_y;
+	fractal->shift_x -= (m_re_after - m_re_before);
+	fractal->shift_y -= (m_im_after - m_im_before);
 	fractal_render(fractal);
-	return (0); 
+	return (0);
 }

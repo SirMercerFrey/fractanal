@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcharret <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,16 +12,21 @@
 
 #include "fractol.h"
 
-int	main(int argc, char **argv)
+void	print_error_and_exit(void)
 {
-	t_fractal	fractal;
+	ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
 
-	if (!is_valid_args(argc, argv))
-		print_error_and_exit();
-	fractal.name = argv[1];
-	if (!ft_strncmp(fractal.name, "julia", 5))
-		init_julia(&fractal, argv);
-	fractal_init(&fractal);
-	fractal_render(&fractal);
-	mlx_loop(fractal.mlx_connection);
+void	malloc_error(void)
+{
+	perror("Problems with malloc");
+	exit(EXIT_FAILURE);
+}
+
+int	is_valid_args(int argc, char **argv)
+{
+	return ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
+		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5))
+		|| (argc == 2 && !ft_strncmp(argv[1], "burning_ship", 12)));
 }

@@ -19,7 +19,8 @@ SRC_FILES   := \
 				init.c\
 				math_utils.c\
 				render.c\
-				string_utils.c	
+				string_utils.c\
+				errors.c	
 
 SRC         := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ         := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
