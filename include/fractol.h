@@ -22,7 +22,7 @@
 # include "mlx.h"
 
 # define ERROR_MESSAGE	"Please enter a valid fractal name.\n" 
-# define ERROR_JULIA "Please enter valid numbers.\n"
+# define ERROR_JULIA "Please enter valid numbers... Loser.\n"
 
 # define WIDTH	700
 # define HEIGHT	700
