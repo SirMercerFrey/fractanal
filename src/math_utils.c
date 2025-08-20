@@ -48,14 +48,23 @@ int	get_psychedelic_color(int i, t_fractal *fractal)
 {
 	int							cross;
 	static const unsigned int	colors[COLOR_COUNT] = {
-		MAGENTA_BURST,
-		LIME_SHOCK,
-		NEON_ORANGE,
-		PSYCHEDELIC_PURPLE,
-		AQUA_DREAM,
-		HOT_PINK,
-		ELECTRIC_BLUE,
-		LAVA_RED
+		ROUGE,
+		ROUGE_ORANGE,
+		ORANGE,
+		JAUNE_ORANGE,
+		JAUNE,
+		JAUNE_VERT,
+		VERT_CLAIR,
+		VERT_CITRON,
+		VERT_PUR,
+		TURQUOISE,
+		CYAN,
+		BLEU_CLAIR,	
+		BLEU_VIF,
+		BLEU_PUR,
+		VIOLET,
+		MAGENTA,		
+		ROSE
 	};
 
 	if (fractal->iterations_definition == 0)
