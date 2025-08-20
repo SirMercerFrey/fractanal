@@ -24,8 +24,8 @@
 # define ERROR_MESSAGE	"Please enter a valid fractal name.\n" 
 # define ERROR_JULIA "Please enter valid numbers.\n"
 
-# define WIDTH	512
-# define HEIGHT	512
+# define WIDTH	700
+# define HEIGHT	700
 
 # define BLACK	0x000000
 
@@ -126,5 +126,6 @@ double		atodbl(char *s);
 void		print_error_and_exit(void);
 int			is_valid_args(int argc, char **argv);
 void		init_julia(t_fractal *f, char **argv);
+int			special_key_handler(int keysym, t_fractal *fractal);
 
 #endif
