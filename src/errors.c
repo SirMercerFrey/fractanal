@@ -14,7 +14,7 @@
 
 void	print_error_and_exit(void)
 {
-	write(2, "Penitenziagite !!!\n", 19); 
+	write(2, "Penitenziagite !!!\n", 19);
 	write(2, "Please enter one of the following:\n", 35);
 	write(2, "\t\"./fractol mandelbrot\"\n", 24);
 	write(2, "\t\"./fractol julia <value_1> <value_2>\"\n", 39);
