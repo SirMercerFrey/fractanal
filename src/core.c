@@ -22,8 +22,8 @@ void	calculate_mandelbrot(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.re = 0;
 	z.im = 0;
-	c.re = (map(x, -4, 4, WIDTH) * fractal->zoom) + fractal->shift_x;
-	c.im = (map(y, 4, -4, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	c.re = (map(x, -2.1, 1.1, WIDTH) * fractal->zoom) + fractal->shift_x;
+	c.im = (map(y, 1.65, -1.65, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
@@ -46,8 +46,8 @@ void	calculate_julia(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.re = (map(x, -4, 4, WIDTH) * fractal->zoom) + fractal->shift_x;
-	z.im = (map(y, 4, -4, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.re = (map(x, -2.1, 1.1, WIDTH) * fractal->zoom) + fractal->shift_x;
+	z.im = (map(y, 1.65, -1.65, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	c.re = fractal->julia_x;
 	c.im = fractal->julia_y;
 	while (i < fractal->iterations_definition)
@@ -74,8 +74,8 @@ void	calculate_burning_ship(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.re = 0;
 	z.im = 0;
-	c.re = (map(x, -4, 4, WIDTH) * fractal->zoom) + fractal->shift_x;
-	c.im = (map(y, -4, 4, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	c.re = (map(x, -2.1, 1.1, WIDTH) * fractal->zoom) + fractal->shift_x;
+	c.im = (map(y, -1.65, 1.65, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(abs_complex(z)), c);

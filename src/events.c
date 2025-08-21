@@ -31,13 +31,13 @@ int	key_handler(int keysym, t_fractal *fractal)
 	if (keysym == XK_Escape)
 		close_handler(fractal);
 	if (keysym == XK_Left)
-		fractal->shift_x += (0.5 * fractal->zoom);
+		fractal->shift_x += (0.25 * fractal->zoom);
 	else if (keysym == XK_Right)
-		fractal->shift_x -= (0.5 * fractal->zoom);
+		fractal->shift_x -= (0.25 * fractal->zoom);
 	else if (keysym == XK_Up)
-		fractal->shift_y -= (0.5 * fractal->zoom);
+		fractal->shift_y -= (0.25 * fractal->zoom);
 	else if (keysym == XK_Down)
-		fractal->shift_y += (0.5 * fractal->zoom);
+		fractal->shift_y += (0.25 * fractal->zoom);
 	else if (keysym == XK_plus || keysym == XK_KP_Add)
 		fractal->iterations_definition += 10;
 	else if (keysym == XK_minus || keysym == XK_KP_Subtract)
@@ -70,7 +70,7 @@ int	special_key_handler(int keysym, t_fractal *fractal)
 	return (0);
 }
 
-int	mouse_handler(int button, int x, int y, t_fractal *fractal)
+int	mouse_handler(int button, int x, int y, t_fractal *f)
 {
 	double	zoom_factor;
 	double	m_re_before;
@@ -78,23 +78,23 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 	double	m_re_after;
 	double	m_im_after;
 
-	m_re_before = map(x, -4, 4, WIDTH) * fractal->zoom + fractal->shift_x;
-	m_im_before = map(y, 4, -4, HEIGHT) * fractal->zoom + fractal->shift_y;
-	if (!ft_strncmp(fractal->name, "burning_ship", 12))
-		m_im_before = map(y, -4, 4, HEIGHT) * fractal->zoom + fractal->shift_y;
+	m_re_before = map(x, -2.1, 1.1, WIDTH) * f->zoom + f->shift_x;
+	m_im_before = map(y, 1.65, -1.65, HEIGHT) * f->zoom + f->shift_y;
+	if (!ft_strncmp(f->name, "burning_ship", 12))
+		m_im_before = map(y, -1.65, 1.65, HEIGHT) * f->zoom + f->shift_y;
 	if (button == Button4)
 		zoom_factor = 0.95;
 	else if (button == Button5)
 		zoom_factor = 1.05;
 	else
 		return (0);
-	fractal->zoom *= zoom_factor;
-	m_re_after = (map(x, -4, 4, WIDTH) * fractal->zoom) + fractal->shift_x;
-	m_im_after = (map(y, 4, -4, HEIGHT) * fractal->zoom) + fractal->shift_y;
-	if (!ft_strncmp(fractal->name, "burning_ship", 12))
-		m_im_after = map(y, -4, 4, HEIGHT) * fractal->zoom + fractal->shift_y;
-	fractal->shift_x -= (m_re_after - m_re_before);
-	fractal->shift_y -= (m_im_after - m_im_before);
-	fractal_render(fractal);
+	f->zoom *= zoom_factor;
+	m_re_after = (map(x, -2.1, 1.1, WIDTH) * f->zoom) + f->shift_x;
+	m_im_after = (map(y, 1.65, -1.65, HEIGHT) * f->zoom) + f->shift_y;
+	if (!ft_strncmp(f->name, "burning_ship", 12))
+		m_im_after = map(y, -1.65, 1.65, HEIGHT) * f->zoom + f->shift_y;
+	f->shift_x -= (m_re_after - m_re_before);
+	f->shift_y -= (m_im_after - m_im_before);
+	fractal_render(f);
 	return (0);
 }
